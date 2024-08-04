@@ -14,8 +14,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static com.semicolon.africa.util.Mapper.map;
 
@@ -50,6 +50,8 @@ public class NoteServicesImpl implements NoteServices {
         Note note = findByTitle(request.getTitle());
         note.setTitle(request.getTitle());
         note.setContent(request.getContent());
+        note.setUpdatedDate(LocalDateTime.now());
+        repo.save(note);
         UpdateNoteResponse response = new UpdateNoteResponse();
         response.setMessage("message updated");
         return response;
@@ -58,6 +60,10 @@ public class NoteServicesImpl implements NoteServices {
     private Note findByTitle(String title) {
         return repo.findByTitle(title)
                 .orElseThrow(() -> new NoteNotFoundException("note not found"));
+    }
+
+    public Note findNoteByTitle(String title) {
+        return findByTitle(title);
     }
 
     @Override

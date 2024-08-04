@@ -8,11 +8,13 @@ import com.semicolon.africa.dtos.response.AddNoteResponse;
 import com.semicolon.africa.dtos.response.UpdateNoteResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface NoteServices {
     AddNoteResponse createNote(CreateNoteRequest request);
     Long getTotalNotes();
     UpdateNoteResponse updateNoteWith(UpdateNoteRequest request);
-    DeleteNoteResponse deleteNote(String noteId);
+    DeleteNoteResponse deleteNote(String title);
     List<Note> getAllNotes();
+    Note findNoteByTitle(String title);
 }
