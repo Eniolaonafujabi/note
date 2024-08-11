@@ -9,7 +9,6 @@ import com.semicolon.africa.exception.EmailExistsException;
 import com.semicolon.africa.exception.PassWordException;
 import com.semicolon.africa.services.interfaces.UserServices;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -81,8 +80,10 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public DeleteNoteResponse deleteNote(DeleteNoteRequest request) {
+        User user = findByEmail(request.getEmail());
         return null;
     }
+
 
 
     private User findByEmail(String email) {

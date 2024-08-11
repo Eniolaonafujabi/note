@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 public class DeleteNoteRequest {
     String title;
-    String userId;
+    String email;
 }

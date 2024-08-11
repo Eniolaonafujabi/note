@@ -37,8 +37,7 @@ public class NoteServicesImplTest {
         CreateNoteRequest request = new CreateNoteRequest();
         request.setTitle("Title");
         request.setContent("Content");
-        AddNoteResponse response = noteServices.createNote(request);
-        return response;
+        return noteServices.createNote(request);
     }
     @Test
     public void testThatICanCreateNote() {
